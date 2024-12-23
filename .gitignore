@@ -1,0 +1,83 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.virtualenv/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+*.log
+*.out
+*.err
+
+# Python GUI-specific files
+# PyQt or PySide related temporary files
+*.pyc
+*.pyo
+*.pyd
+*.qrc
+*.rcc
+
+# Kivy-specific cache
+*.buildozer/
+.buildozer/
+.kivy/
+
+# Tkinter or other GUI temp files
+*.tmp
+
+# Packaging
+*.egg
+*.egg-info/
+dist/
+build/
+*.wheel
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Test results
+*.pytest_cache/
+.pytest_cache/
+htmlcov/
+.coverage
+.tox/
+.nox/
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+
+# PyInstaller files
+*.spec
+build/
+dist/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Documentation
+docs/_build/
