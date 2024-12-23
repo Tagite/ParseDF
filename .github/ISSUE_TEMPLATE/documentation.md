@@ -1,7 +1,7 @@
 ---
 name: Documentation
 about: Describe this issue template's purpose here.
-title: ''
+title: '📚[Docs]: '
 labels: "\U0001F4C4 documentation"
 assignees: Tagite
 

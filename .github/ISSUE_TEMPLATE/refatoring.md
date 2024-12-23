@@ -1,7 +1,7 @@
 ---
 name: Refatoring
 about: Describe this issue template's purpose here.
-title: ''
+title: '♻️[refactor]: '
 labels: "♻ refactor"
 assignees: Tagite
 
