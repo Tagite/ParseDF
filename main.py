@@ -172,15 +172,18 @@ class PDFViewer(QMainWindow):
 
     def update_page(self) -> None:
         page = self.doc.load_page(self.current_page)
-        pix = page.get_pixmap()
-        
+        pix = page.get_pixmap()  # type: ignore [attr-defined]
+
         window_width = self.width() - 50
         scale_factor = window_width / pix.width
-        
+
         image = Image.open(io.BytesIO(pix.tobytes("png")))
-        scaled_size = (int(image.width * scale_factor), int(image.height * scale_factor))
-        image = image.resize(scaled_size, Image.LANCZOS)
-        
+        scaled_size = (
+            int(image.width * scale_factor),
+            int(image.height * scale_factor),
+        )
+        image = image.resize(scaled_size, Image.LANCZOS)  # type: ignore [attr-defined]
+
         qimage = QImage(
             image.tobytes(),
             image.width,
@@ -188,14 +191,16 @@ class PDFViewer(QMainWindow):
             image.width * 3,
             QImage.Format.Format_RGB888,
         )
-        
+
         pixmap = QPixmap.fromImage(qimage)
         self.image_label.setPixmap(pixmap)
         self.image_label.set_page(self.current_page)
         self.image_label.set_scale_factor(scale_factor)
-        
+
         self.page_label.setText(f"Page {self.current_page + 1} / {self.num_pages}")
-        self.setWindowTitle(f"PDF Viewer - Page {self.current_page + 1} / {self.num_pages}")
+        self.setWindowTitle(
+            f"PDF Viewer - Page {self.current_page + 1} / {self.num_pages}"
+        )
 
     def clear_current_page_boxes(self) -> None:
         self.image_label.clear_boxes()
@@ -220,7 +225,7 @@ class PDFViewer(QMainWindow):
         if not file_path:
             return
 
-        with open(file_path, 'w', encoding='utf-8') as f:
+        with open(file_path, "w", encoding="utf-8") as f:
             f.write("# PDF Annotations\n\n")
             boxes = self.image_label.get_boxes()
             for page_num in sorted(boxes.keys()):
@@ -229,7 +234,9 @@ class PDFViewer(QMainWindow):
                     for i, rect in enumerate(boxes[page_num], 1):
                         x1, y1, x2, y2 = self.image_label.get_pdf_coordinates(rect)
                         f.write(f"### Box {i}\n")
-                        f.write(f"- Coordinates: [{x1:.2f}, {y1:.2f}, {x2:.2f}, {y2:.2f}]\n\n")
+                        f.write(
+                            f"- Coordinates: [{x1:.2f}, {y1:.2f}, {x2:.2f}, {y2:.2f}]\n\n"
+                        )
 
     def crop_pdf_from_annotations(self) -> None:
         md_path, _ = QFileDialog.getOpenFileName(
@@ -248,7 +255,7 @@ class PDFViewer(QMainWindow):
         os.makedirs(output_dir, exist_ok=True)
 
         current_page = None
-        with open(md_path, 'r', encoding='utf-8') as f:
+        with open(md_path, "r", encoding="utf-8") as f:
             for line in f:
                 if line.startswith("## Page"):
                     current_page = int(line.split()[2]) - 1
@@ -257,13 +264,15 @@ class PDFViewer(QMainWindow):
                     if current_page is not None:
                         self.crop_and_save_region(current_page, coords, output_dir)
 
-    def crop_and_save_region(self, page_num: int, coords: List[float], output_dir: str) -> None:
+    def crop_and_save_region(
+        self, page_num: int, coords: List[float], output_dir: str
+    ) -> None:
         page = self.doc.load_page(page_num)
         x1, y1, x2, y2 = coords
-        
+
         rect = fitz.Rect(x1, y1, x2, y2)
-        pix = page.get_pixmap(clip=rect)
-        
+        pix = page.get_pixmap(clip=rect)  # type: ignore [attr-defined]
+
         image_path = os.path.join(
             output_dir, f"page_{page_num + 1}_crop_{x1:.0f}_{y1:.0f}.png"
         )
