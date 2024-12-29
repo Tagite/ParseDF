@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: ''
+title: '🐛[Bug]: '
 labels: "\U0001F41B bug"
 assignees: Tagite
 
