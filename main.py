@@ -18,6 +18,7 @@ import io
 import os
 import typer
 
+
 class DrawableQLabel(QLabel):
     def __init__(self) -> None:
         super().__init__()
