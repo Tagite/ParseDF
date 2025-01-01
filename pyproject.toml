@@ -8,6 +8,7 @@ dependencies = [
     "pillow>=11.0.0",
     "pymupdf>=1.25.1",
     "pyqt5>=5.15.11",
+    "typer>=0.15.1",
 ]
 
 [dependency-groups]
