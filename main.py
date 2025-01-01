@@ -16,6 +16,7 @@ import fitz  # PyMuPDF
 from PIL import Image
 import io
 import os
+import typer
 
 
 class DrawableQLabel(QLabel):
@@ -279,9 +280,12 @@ class PDFViewer(QMainWindow):
         pix.save(image_path)
 
 
-if __name__ == "__main__":
+def main(pdf_path: str):
     app: QApplication = QApplication(sys.argv)
-    pdf_path: str = "crawler.pdf"
     viewer: PDFViewer = PDFViewer(pdf_path)
     viewer.show()
     sys.exit(app.exec_())
+
+
+if __name__ == "__main__":
+    typer.run(main)

@@ -30,18 +30,19 @@ This project is a PDF labeling tool designed to enhance RAG performance. The too
 ## 🛠️ Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/repository.git
+   git clone -b dev https://github.com/Tagite/ParseDF.git
+2. Install UV([Python package and project manager](https://github.com/astral-sh/uv))
+   ```bash
+   # On macOS and Linux.
+   curl -LsSf https://astral.sh/uv/install.sh | sh 
 
----
+   # On Windows.
+   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+   
+   # (Cross platform)With pip.
+   pip install uv
 
 ## 🚀 Usage
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/username/repository.git
-
----
-
-## ⚙️ Configuration
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/username/repository.git
+1. Run with pdf_path:
+   ```python
+   uv run main.py {PDF_PATH}
