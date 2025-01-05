@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from entites.label import Label
 
 
-@dataclass(frozen=True)
+@dataclass
 class Page:
     labels: list[Label] = field(default_factory=list)
 
