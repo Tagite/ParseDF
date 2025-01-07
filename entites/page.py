@@ -1,11 +1,12 @@
-from dataclasses import dataclass, field
+from pydantic import BaseModel, Field
 
 from entites.label import Label
 
 
-@dataclass
-class Page:
-    labels: list[Label] = field(default_factory=list)
+class Page(BaseModel):
+    labels: list[Label] = Field(
+        default_factory=list,
+        private=True)
 
     def add_label(self, label: Label) -> None:
         self.labels.append(label)
@@ -21,3 +22,6 @@ class Page:
         if len(new_labels) == len(self.labels):  # No label was removed
             raise ValueError(f"{label_id} is not found")
         self.labels = new_labels
+    
+    class config:
+        frozen = True

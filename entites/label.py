@@ -1,31 +1,30 @@
 from __future__ import annotations
+from pydantic import BaseModel, Field
 import uuid
-from dataclasses import dataclass, field
 
 
-@dataclass(frozen=True)
-class Pos:
+class Pos(BaseModel):
     x: int
     y: int
+    
+    class Config:
+        frozen = True
 
 
-@dataclass(frozen=True)
-class BBox:
+class BBox(BaseModel):
     top_left: Pos
     bottom_right: Pos
 
+    class Config:
+        frozen = True
 
-@dataclass(frozen=True)
-class Label:
-    id: uuid.UUID = field(default_factory=uuid.uuid4, init=False)
+
+class Label(BaseModel):
+    id: uuid.UUID = Field(
+                        default_factory=uuid.uuid4,
+                        private=True)
     bbox: BBox
     label_type: str
 
-    def with_bbox(self, bbox: BBox) -> Label:
-        return Label(bbox=bbox, label_type=self.label_type)
-
-    def with_label_type(self, label_type: str) -> Label:
-        return Label(bbox=self.bbox, label_type=label_type)
-
-    def __repr__(self):
-        return f"Label(id={self.id}, bbox={self.bbox}, label_type={self.label_type})"
+    class Config:
+        frozen = True
