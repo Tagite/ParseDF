@@ -56,5 +56,14 @@ class Label(BaseModel):
     bbox: BBox
     label_type: LabelType
 
+    def update_by_bbox(self, bbox: BBox) -> Label:
+        return self._update_field(bbox=bbox)
+
+    def update_by_label_type(self, label_type: LabelType) -> Label:
+        return self._update_field(label_type=label_type)
+
+    def _update_field(self, **fields) -> Label:
+        return self.model_copy(update=fields)
+    
     class Config:
         frozen = True
