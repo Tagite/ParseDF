@@ -15,8 +15,8 @@ def is_filled(value: str) -> str:
     return value
 
 
-def validate_equal_type(obj_a: object, obj_b: object) ->bool:
-    if type(obj_a) != type(obj_b):
+def validate_equal_type(obj_a: object, obj_b: object) -> bool:
+    if type(obj_a) is not type(obj_b):
         raise ValueError(f"{obj_a} is {type(obj_a)}, {obj_b} is {type(obj_b)}")
     return True
 

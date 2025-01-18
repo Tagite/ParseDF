@@ -25,7 +25,7 @@ class Label(BaseModel):
 
     def _update_field(self, **fields) -> Label:
         return self.model_copy(update=fields)
-    
+
     def __eq__(self, other: object) -> bool:
         validate_equal_type(self, other)
 
