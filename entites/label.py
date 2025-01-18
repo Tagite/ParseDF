@@ -6,7 +6,6 @@ from pydantic import BaseModel
 from pydantic import Field
 from pydantic import field_validator
 from pydantic import model_validator
-from pydantic import ValidationError
 
 
 class Pos(BaseModel):
@@ -15,9 +14,10 @@ class Pos(BaseModel):
 
     @field_validator("x", "y", mode="after")
     @classmethod
-    def ensure_positive(cls, value: int) -> int:
+    def ensure_positive(cls,
+                        value: int) -> int:
         if value < 0:
-            raise ValidationError(f"{value} is not an positive number")
+            raise ValueError(f"{value} is not an positive number")
         return value
 
     class Config:
@@ -43,19 +43,17 @@ class LabelType(BaseModel):
 
     @field_validator("name", mode="after")
     @classmethod
-    def ensure_not_blank(cls, value: str) -> str:
+    def ensure_not_blank(cls,
+                         value: str) -> str:
         if not len(value.strip()):
-            raise ValidationError('name is blank')
+            raise ValueError('name is blank')
             
-
     class Config:
         frozen = True
 
 
 class Label(BaseModel):
-    id: uuid.UUID = Field(
-                        default_factory=uuid.uuid4,
-                        )
+    id: uuid.UUID = Field(default_factory=uuid.uuid4)
     bbox: BBox
     label_type: LabelType
 
