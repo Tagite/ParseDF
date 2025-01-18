@@ -14,15 +14,14 @@ class Pos(BaseModel):
 
     @field_validator("x", "y", mode="after")
     @classmethod
-    def ensure_positive(cls,
-                        value: int) -> int:
+    def ensure_positive(cls, value: int) -> int:
         if value < 0:
             raise ValueError(f"{value} is not an positive number")
         return value
 
     class Config:
         frozen = True
-    
+
 
 class BBox(BaseModel):
     top_left: Pos
@@ -30,8 +29,9 @@ class BBox(BaseModel):
 
     @model_validator(mode="after")
     def check_relative_pos(self) -> Self:
-        if self.top_left.x > self.bottom_right.x \
-                or self.top_left.y < self.bottom_right.y:
+        if (self.top_left.x > self.bottom_right.x) or (
+            self.top_left.y < self.bottom_right.y
+        ):
             raise ValueError("top_left & bottom_right relative don't match")
 
     class Config:
@@ -43,11 +43,10 @@ class LabelType(BaseModel):
 
     @field_validator("name", mode="after")
     @classmethod
-    def ensure_not_blank(cls,
-                         value: str) -> str:
+    def ensure_not_blank(cls, value: str) -> str:
         if not len(value.strip()):
-            raise ValueError('name is blank')
-            
+            raise ValueError("name is blank")
+
     class Config:
         frozen = True
 
