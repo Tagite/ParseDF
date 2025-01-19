@@ -1,10 +1,9 @@
+import uuid
 from pydantic import BaseModel
 from pydantic import Field
-import uuid
 
-
-from domain.entites.label import Label
-from domain.entites.validator import PositveNumber
+from domain.label import Label
+from domain.validator import PositveNumber
 
 
 class Page(BaseModel):
