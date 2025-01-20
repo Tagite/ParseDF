@@ -15,12 +15,3 @@ class Label(BaseModel):
 
     class Config:
         frozen = True
-
-
-
-
-
-
-
-
-
