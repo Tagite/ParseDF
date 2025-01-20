@@ -2,7 +2,7 @@ import uuid
 from pydantic import BaseModel
 from pydantic import Field
 
-from domain.page import Page
+from domain.entites.page import Page
 
 
 class Pdf(BaseModel):

@@ -1,9 +1,9 @@
 import uuid
 from pathlib import Path
 
-from domain.pdf import Pdf
-from adapters.pdf_repo_interface import PdfRepoInterface
-from adapters.md_pdf_conveter import MdPdfConveter
+from domain.entites.pdf import Pdf
+from domain.repository.pdf_repo_interface import PdfRepoInterface
+from infrastructure.repositories.md_pdf_conveter import MdPdfConveter
 
 
 class LocalPdfRepo(PdfRepoInterface):

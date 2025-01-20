@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from domain.validator import NotBlankStr
+from domain.services.validator import NotBlankStr
 
 
 class LabelType(BaseModel):

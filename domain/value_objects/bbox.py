@@ -2,7 +2,7 @@ from typing_extensions import Self
 from pydantic import BaseModel
 from pydantic import model_validator
 
-from domain.pos import Pos
+from domain.value_objects.pos import Pos
 
 
 class BBox(BaseModel):

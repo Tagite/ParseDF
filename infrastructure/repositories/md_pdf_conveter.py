@@ -1,4 +1,4 @@
-from domain.pdf import Pdf
+from domain.entites.pdf import Pdf
 
 
 class MdPdfConveter:

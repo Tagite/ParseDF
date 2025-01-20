@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from domain.validator import PositveNumber
+from domain.services.validator import PositveNumber
 
 
 class Pos(BaseModel):

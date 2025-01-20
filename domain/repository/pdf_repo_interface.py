@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 import uuid
 
-from domain.pdf import Pdf
+from domain.entites.pdf import Pdf
 
 
 class PdfRepoInterface(ABC):
