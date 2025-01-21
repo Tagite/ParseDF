@@ -2,7 +2,7 @@ from domain.entites.label import Label
 from domain.repository.pdf_repo_interface import PDFRepositoryInterface
 
 
-class CreateLabelUseCase:
+class AddLabelUseCase:
     def __init__(self, pdf_repo: PDFRepositoryInterface):
         self.pdf_repo = pdf_repo
 
