@@ -3,15 +3,15 @@ from pydantic import BaseModel
 from pydantic import Field
 
 from domain.entites.label import Label
-from domain.services.validator import PositveNumber
+from domain.services.validator import PositveIntNumber
 
 
 class Page(BaseModel):
-    index: PositveNumber
+    index: PositveIntNumber
     labels: list[Label] = Field(default_factory=list)
 
     def get_label(self, label_id: uuid.UUID) -> Label:
-        target_label = next(filter(lambda x: x.id == label_id, self.labels), None)
+        target_label = next(filter(lambda x: str(x.id) == label_id, self.labels), None)
         if target_label is None:
             raise ValueError(f"{label_id} is not found")
         return target_label

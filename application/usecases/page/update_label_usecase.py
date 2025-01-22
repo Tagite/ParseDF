@@ -1,9 +1,9 @@
 from domain.entites.label import Label
-from domain.repository.pdf_repo_interface import PDFRepositoryInterface
+from domain.repository.pdf_repo_interface import PdfRepoInterface
 
 
 class UpdateLabelUseCase:
-    def __init__(self, pdf_repo: PDFRepositoryInterface):
+    def __init__(self, pdf_repo: PdfRepoInterface):
         self.pdf_repo = pdf_repo
 
     def execute(

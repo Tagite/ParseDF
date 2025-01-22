@@ -4,11 +4,11 @@ from domain.entites.label import Label
 from domain.repository.pdf_repo_interface import PdfRepoInterface
 
 
-class GetLabelUseCase:
+class GetAllLabelsUseCase:
     def __init__(self, pdf_repo: PdfRepoInterface):
         self.pdf_repo = pdf_repo
 
-    def execute(self, pdf_id: str, page_index: int, label_id: int) -> Label:
+    def execute(self, pdf_id: str, page_index: int) -> Label:
         pdf: Pdf = self.pdf_repo.find_by_id(pdf_id)
         page: Page = pdf.get_page_by_index(page_index)
-        return page.get_label(label_id)
+        return page.labels

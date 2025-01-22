@@ -15,12 +15,16 @@ class Label(BaseModel):
 
     class Config:
         frozen = True
+        from_attributes = True
 
     def update_bbox(self, bbox: BBox) -> Label:
         return self._update_field(bbox=bbox)
 
     def update_label_type(self, label_type: LabelType) -> Label:
         return self._update_field(label_type=label_type)
+
+    def clone(self) -> Label:
+        return self.model_copy()
 
     def _update_field(self, **fields) -> Label:
         return self.model_copy(update=fields)

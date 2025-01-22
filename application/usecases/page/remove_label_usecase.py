@@ -1,8 +1,8 @@
-from domain.repository.pdf_repo_interface import PDFRepositoryInterface
+from domain.repository.pdf_repo_interface import PdfRepoInterface
 
 
 class RemoveLabelUseCase:
-    def __init__(self, pdf_repo: PDFRepositoryInterface):
+    def __init__(self, pdf_repo: PdfRepoInterface):
         self.pdf_repo = pdf_repo
 
     def execute(self, pdf_id: str, page_index: int, label_id: str) -> None:

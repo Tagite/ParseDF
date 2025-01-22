@@ -1,11 +1,12 @@
 from pydantic import BaseModel
 
-from domain.services.validator import PositveNumber
+from domain.services.validator import PositveFloatNumber
 
 
 class Pos(BaseModel):
-    x: PositveNumber
-    y: PositveNumber
+    x: PositveFloatNumber
+    y: PositveFloatNumber
 
     class Config:
         frozen = True
+        from_attributes = True

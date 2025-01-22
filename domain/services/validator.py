@@ -4,7 +4,7 @@ from pydantic import AfterValidator
 
 
 def is_positive(value: int) -> int:
-    if value <= 0:
+    if value < 0:
         raise ValueError(f"{value} is not positive")
     return value
 
@@ -21,5 +21,6 @@ def validate_equal_type(obj_a: object, obj_b: object) -> bool:
     return True
 
 
-PositveNumber = Annotated[int, AfterValidator(is_positive)]
+PositveIntNumber = Annotated[int, AfterValidator(is_positive)]
+PositveFloatNumber = Annotated[float, AfterValidator(is_positive)]
 NotBlankStr = Annotated[str, AfterValidator(is_filled)]
